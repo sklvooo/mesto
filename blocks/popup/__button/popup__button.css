@@ -1,0 +1,18 @@
+.popup__button {
+    margin: 50px auto 50px;
+    padding: 0;
+    width: 100%;
+    height: 50px;
+    border: none;
+    font: inherit;
+    color: #ffffff;
+    background-color: #000000;
+    align-self: center;
+    font-size: 18px;
+}
+
+@media (max-width: 470px) {
+    .popup__button {
+        margin: 40px auto 25px;
+    }
+}

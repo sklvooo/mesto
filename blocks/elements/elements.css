@@ -1,0 +1,17 @@
+.elements {
+    width: 882px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+@media (max-width: 1280px) {
+    .elements {
+        width: 70%;
+    }
+}
+
+@media (max-width: 320px) {
+    .elements {
+        width: 282px;
+    }
+}

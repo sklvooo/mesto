@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="pages/index.css" rel="stylesheet">
+        <title>Проект 4: Место</title>
+    </head>
+    <body class="page">
+        <header class="header">
+            <img src="images/logo.svg" alt="Логотип проекта Место" class="logo">
+        </header>
+        <main>
+            <section class="profile">
+                <div class="profile__info">
+                    <img src="images/avatar.png" alt="Фотография пользователя" class="profile__photo">
+                    <div class="profile__text">
+                        <div class="profile__wrapper">
+                            <h1 class="profile__name">Жак-Ив Кусто</h1>
+                            <button class="profile__add-button add-button">
+                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 1.32827L2.60377 8.7666L1.28302 7.41936L8.66038 0L10 1.32827ZM0 10L1.96226 9.41177L0.584906 8.08349L0 10Z" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="profile__job">Исследователь океана</p>
+                    </div>
+                </div>
+                <button class="profile__add-photo">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 9.77778H12.2222V0H9.77778V9.77778H0V12.2222H9.77778V22H12.2222V12.2222H22V9.77778Z" fill="white"/>
+                    </svg>
+                </button>
+            </section>
+            <section class="elements">
+                <ul class="elements__list">
+                    <li class="elements__list-item">
+                        <img src="images/karachaev.jpg" alt="Фото Карачаевска" class="elements__image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__text">Карачаевск</h2>
+                            <img src="images/heart.svg" alt="Кнопка лайк">
+                        </div>
+                    </li>
+                    <li class="elements__list-item">
+                        <img src="images/elbrus.png" alt="Фото Эльбруса" class="elements__image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__text">Гора Эльбрус</h2>
+                            <img src="images/heart.svg" alt="Кнопка лайк">
+                        </div>
+                    </li>
+                    <li class="elements__list-item">
+                        <img src="images/dombay.png" alt="Фото Домбая" class="elements__image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__text">Домбай</h2>
+                            <img src="images/heart.svg" alt="Кнопка лайк">
+                        </div>
+                    </li>
+                    <li class="elements__list-item">
+                        <img src="images/elbrus.png" alt="Фото Эльбруса" class="elements__image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__text">Гора Эльбрус</h2>
+                            <img src="images/heart.svg" alt="Кнопка лайк">
+                        </div>
+                    </li>
+                    <li class="elements__list-item">
+                        <img src="images/dombay.png" alt="Фото Домбая" class="elements__image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__text">Домбай</h2>
+                            <img src="images/heart.svg" alt="Кнопка лайк">
+                        </div>
+                    </li>
+                    <li class="elements__list-item">
+                        <img src="images/karachaev.jpg" alt="Фото Карачаевска" class="elements__image">
+                        <div class="elements__wrapper">
+                            <h2 class="elements__text">Карачаево-Черкессия</h2>
+                            <img src="images/heart.svg" alt="Кнопка лайк">
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <footer class="footer">
+            <p class="footer__text">© 2020 Mesto Russia</p>
+        </footer>
+        <div class="popup">
+            <div class="popup__container">
+                <svg width="58" height="58" viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg" class="popup__close" tabindex="0">
+                    <path d="M44.7661 41.5683L31.9759 28.778L44.7661 15.9878L41.5686 12.7902L28.7783 25.5805L15.9881 12.7902L12.7905 15.9878L25.5808 28.778L12.7905 41.5683L15.9881 44.7658L28.7783 31.9756L41.5686 44.7658L44.7661 41.5683Z"/>
+                </svg>
+                <div class="popup__wrapper">
+                    <h2 class="popup__header">Редактировать профиль</h2>
+                    <form class="popup__form">
+                        <input type="text" name="name" class="popup__name popup__input" value="">
+                        <input type="text" name="job" class="popup__job popup__input" value="">
+                        <button type="submit" class="popup__button">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="js/main.js"></script>
+    </body>
+</html>

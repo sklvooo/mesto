@@ -1,0 +1,11 @@
+.page {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #000;
+    min-width: 1280px;
+}
+
+@media (max-width: 1280px) {
+    .page {
+        min-width: 320px;
+    }
+}
