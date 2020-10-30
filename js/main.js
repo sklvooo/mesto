@@ -19,8 +19,6 @@ const openPopup = () => {
     popUpSubmit.addEventListener(`click`, savePopup);
     document.addEventListener(`keydown`, onEscPress);
     document.removeEventListener(`keydown`, onOpenPopupEnterPress);
-    closeEditBtn.addEventListener(`keydown`, onClosePopupEnterPress);
-    popUpSubmit.addEventListener(`keydown`, onSavePopupEnterPress);
 };
 
 const closePopup = () => {
@@ -32,8 +30,6 @@ const closePopup = () => {
     popUpSubmit.removeEventListener(`click`, savePopup);
     document.removeEventListener(`keydown`, onEscPress);
     document.addEventListener(`keydown`, onOpenPopupEnterPress);
-    closeEditBtn.removeEventListener(`keydown`, onClosePopupEnterPress);
-    popUpSubmit.removeEventListener(`keydown`, onSavePopupEnterPress);
 };
 
 const savePopup = (evt) => {
@@ -45,8 +41,6 @@ const savePopup = (evt) => {
     editNameBtn.addEventListener(`click`, openPopup);
     popUp.classList.remove(`popup_opened`);
     document.addEventListener(`keydown`, onOpenPopupEnterPress);
-    closeEditBtn.removeEventListener(`keydown`, onClosePopupEnterPress);
-    popUpSubmit.addEventListener(`keydown`, onSavePopupEnterPress);
 };
 
 const onEscPress = (evt) => {
@@ -60,20 +54,6 @@ const onOpenPopupEnterPress = (evt) => {
     if (evt.key === ENTER) {
         evt.preventDefault();
         openPopup()
-    }
-};
-
-const onClosePopupEnterPress = (evt) => {
-    if (evt.key === ENTER) {
-        evt.preventDefault();
-        closePopup()
-    }
-};
-
-const onSavePopupEnterPress = (evt) => {
-    if (evt.key === ENTER) {
-        evt.preventDefault();
-        savePopup(evt)
     }
 };
 
