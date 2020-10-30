@@ -5,5 +5,5 @@
 
 Сайт сделан на HTML и CSS и JS. Сетка сделанна на Flexbox.
 
-Сайт можно посмотреть по адресу 
+Сайт можно посмотреть по адресу https://sklvooo.github.io/mesto/index.html
 
