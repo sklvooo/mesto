@@ -4,7 +4,15 @@
     align-self: flex-end;
     margin-bottom: -10px;
     margin-right: -10px;
-    fill: #ffffff;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    background-image: url("../../../images/closeBtn.svg");
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: center;
 }
 
 @media (max-width: 470px) {
@@ -12,5 +20,6 @@
         margin: 0;
         width: 26px;
         height: 26px;
+        background-size: 26px 26px;
     }
 }

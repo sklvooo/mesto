@@ -8,12 +8,17 @@
     color: inherit;
     background-color: transparent;
     align-self: center;
+    background-image: url("../../../images/plus.svg");
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    background-position: center;
 }
 
 @media (max-width: 905px) {
     .profile__add-photo {
         width: 100%;
         margin-top: 36px;
+        background-size: 16px 16px;
     }
 }
 
