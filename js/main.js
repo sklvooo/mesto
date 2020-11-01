@@ -29,4 +29,4 @@ const savePopup = (evt) => {
 
 editNameBtn.addEventListener(`click`, openPopup);
 closeEditBtn.addEventListener(`click`, closePopup);
-popUpSubmit.addEventListener(`click`, savePopup);
+popUpSubmit.addEventListener(`submit`, savePopup);
