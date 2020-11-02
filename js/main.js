@@ -5,7 +5,7 @@ const nameValue = document.querySelector(`.profile__name`);
 const jobValue = document.querySelector(`.profile__job`);
 const nameInput = document.querySelector(`.popup__input_name_name`);
 const jobInput = document.querySelector(`.popup__input_name_job`);
-const popUpSubmit = document.querySelector(`.popup__button`);
+const popupForm = document.querySelector(`.popup__form`);
 
 const openPopup = () => {
     popUp.classList.add(`popup_opened`);
@@ -29,4 +29,4 @@ const savePopup = (evt) => {
 
 editNameBtn.addEventListener(`click`, openPopup);
 closeEditBtn.addEventListener(`click`, closePopup);
-popUpSubmit.addEventListener(`submit`, savePopup);
+popupForm.addEventListener(`submit`, savePopup);
