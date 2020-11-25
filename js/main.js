@@ -33,8 +33,8 @@ const changeNameBtn = document.querySelector(`.profile__add-button`);
 const changeNamePopup = document.querySelector(`.popup_name`);
 const closeChangeNamePopupBtn = changeNamePopup.querySelector(`.popup__close_name`);
 const changeNamePopupForm = changeNamePopup.querySelector(`.popup__form_name`);
-const changeNamePopupNameInput = changeNamePopup.querySelector(`.name__name-input`);
-const changeNamePopupJobInput = changeNamePopup.querySelector(`.name__job-input`);
+const changeNamePopupNameInput = changeNamePopup.querySelector(`.name-input`);
+const changeNamePopupJobInput = changeNamePopup.querySelector(`.job-input`);
 const profileName = document.querySelector(`.profile__name`);
 const profileJob = document.querySelector(`.profile__job`);
 
