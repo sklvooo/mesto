@@ -238,8 +238,8 @@ const clearCards = () => {
 
 // ДОБАВЛЕНИЕ НОВОЙ КАРТИНКИ
 
-const inputPlaceName = document.querySelector(`.place__name-input`);
-const inputPlaceLink = document.querySelector(`.place__link-input`);
+const inputPlaceName = document.querySelector(`.popup__place-name`);
+const inputPlaceLink = document.querySelector(`.popup__place-link`);
 
 const addCard = () => {
     initialCards.unshift(
