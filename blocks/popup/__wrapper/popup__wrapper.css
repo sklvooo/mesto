@@ -1,13 +1,10 @@
 .popup__wrapper {
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
+    background-color: white;
     width: 430px;
-    margin: 0 auto;
+    border-radius: 10px;
 }
 
-@media (max-width: 470px) {
+@media (max-width: 500px) {
     .popup__wrapper {
         width: 282px;
     }

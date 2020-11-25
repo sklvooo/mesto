@@ -1,14 +1,13 @@
 .popup__header {
-    margin: 34px 0 10px 36px;
-    padding: 0;
     font-size: 24px;
     font-weight: 900;
+    margin: 34px 0 10px 36px;
+    padding: 0;
 }
 
-@media (max-width: 470px) {
+@media (max-width: 500px) {
     .popup__header {
         font-size: 18px;
-        text-align: center;
-        margin: 25px 0 0 0;
+        margin: 25px 0 0 22px;
     }
 }

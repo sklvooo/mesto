@@ -1,13 +1,14 @@
 .footer__text {
+    color: #545454;
+    margin: 65px 0 60px 0;
+    padding: 0;
     font-size: 18px;
     font-weight: 400;
-    color: #545454;
-    margin: 40px 0 40px;
-    padding: 0;
 }
 
-@media (max-width: 541px) {
+@media (max-width: 320px) {
     .footer__text {
+        margin: 48px 0 36px 0;
         font-size: 14px;
     }
 }

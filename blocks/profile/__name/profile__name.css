@@ -1,21 +1,20 @@
 .profile__name {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 310px;
-    margin: 0 10px 0 0;
-    padding: 0;
-    color: #fff;
     font-size: 42px;
     line-height: 56px;
     font-weight: 500;
+    max-width: 300px;
+    color: #ffffff;
+    margin: 0 17px 10px 0;
+    padding: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-@media (max-width: 541px) {
+@media (max-width: 420px) {
     .profile__name {
-        width: 190px;
         font-size: 27px;
-        margin-right: 10px;
-        margin-top: 10px;
+        margin: 0 17px 0 0;
+        max-width: 252px;
     }
 }

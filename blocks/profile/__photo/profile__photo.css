@@ -1,12 +1,13 @@
 .profile__photo {
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
     width: 120px;
     height: 120px;
-    margin: 0 30px 0 0;
-    padding: 0;
 }
 
-@media (max-width: 541px) {
+@media (max-width: 550px) {
     .profile__photo {
-        margin-right: 0;
+        align-self: center;
     }
 }

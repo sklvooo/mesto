@@ -1,21 +1,20 @@
 .profile__job {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 310px;
-    margin: 10px 0 0;
+    margin: 0;
     padding: 0;
     color: #ffffff;
     font-size: 18px;
     line-height: normal;
     font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 300px;
 }
 
-@media (max-width: 541px) {
+@media (max-width: 420px) {
     .profile__job {
         font-size: 14px;
-        width: 215px;
         text-align: center;
-        margin-top: 0;
+        max-width: 250px;
     }
 }

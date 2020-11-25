@@ -1,16 +1,13 @@
 .elements__button {
-    font: inherit;
-    color: inherit;
-    background-color: transparent;
-    padding: 0;
-    margin: -7px 0 0;
-    border: none;
-    height: 18px;
     width: 20px;
+    height: 18px;
     align-self: center;
-    cursor: pointer;
+    margin: -7px 18px 0 0;
+    padding: 0;
+    flex-shrink: 0;
     background-image: url("../../../images/heart.svg");
     background-repeat: no-repeat;
     background-size: 20px 18px;
     background-position: center;
+    border: none;
 }

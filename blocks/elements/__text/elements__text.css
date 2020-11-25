@@ -1,10 +1,9 @@
 .elements__text {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    margin: 25px 0 32px 20px;
+    margin: 25px 30px 30px 20px;
     padding: 0;
     font-size: 24px;
     font-weight: 900;
-    align-self: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

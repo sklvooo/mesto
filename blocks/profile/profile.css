@@ -1,20 +1,27 @@
 .profile {
     width: 882px;
     margin: 0 auto;
-    padding: 40px 0 0 0;
+    padding: 40px 0 50px;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 882px) {
     .profile {
-        width: 70%;
+        width: 90%;
+    }
+}
+
+@media (max-width: 720px) {
+    .profile {
+        flex-direction: column;
+        padding: 40px 0 0 0;
     }
 }
 
 @media (max-width: 320px) {
     .profile {
         width: 282px;
+        padding: 40px 0 0 0;
     }
 }
