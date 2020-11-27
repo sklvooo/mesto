@@ -82,8 +82,8 @@ class Popup {
 class ProfilePopup extends Popup {
     constructor (popup) {
         super(popup);
-        this.profileNameInput = popup.querySelector(`.profile-settings__input_name`);
-        this.profileJobInput = popup.querySelector(`.profile-settings__input_job`);
+        this.profileNameInput = popup.querySelector(`.profile-settings__input-name`);
+        this.profileJobInput = popup.querySelector(`.profile-settings__input-job`);
         this.profileName = document.querySelector(`.profile__name`);
         this.profileJob = document.querySelector(`.profile__job`);
         this.form = popup.querySelector(`.popup__form`);
