@@ -32,41 +32,39 @@
         <footer class="footer">
             <p class="footer__text">© 2020 Mesto Russia</p>
         </footer>
-        <div class="popup popup_name">
+        <div class="popup profile-settings">
             <div class="popup__container">
-                <button type="button" class="popup__close button popup__close_name" aria-label="Закрыть попап"></button>
+                <button type="button" class="popup__close button profile-settings__close" aria-label="Закрыть попап"></button>
                 <div class="popup__wrapper">
                     <h2 class="popup__header">Редактировать профиль</h2>
-                    <form class="popup__form popup__form_name" name="popup" method="post">
-                        <input type="text" name="name" class="name-input popup__input" value="" placeholder="Ваше имя?">
-                        <input type="text" name="job" class="job-input popup__input" value="" placeholder="Чем вы занимаетесь?">
+                    <form class="popup__form profile-settings__form" name="popup" method="post">
+                        <input type="text" name="name" class="profile-settings__input_name popup__input" value="" placeholder="Ваше имя?">
+                        <input type="text" name="job" class="profile-settings__input_job popup__input" value="" placeholder="Чем вы занимаетесь?">
                         <button type="submit" class="popup__button button">Сохранить</button>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="popup popup_place">
+        <div class="popup add-card">
             <div class="popup__container">
-                <button type="button" class="popup__close button popup__close_place" aria-label="Закрыть попап"></button>
+                <button type="button" class="popup__close button add-card__close" aria-label="Закрыть попап"></button>
                 <div class="popup__wrapper">
                     <h2 class="popup__header">Новое место</h2>
-                    <form class="popup__form popup__form_place" name="popup" method="post">
-                        <input type="text" name="name" class="popup__place-name popup__input" value="" placeholder="Назавние">
-                        <input type="text" name="job" class="popup__place-link popup__input" value="" placeholder="Ссылка на картинку">
+                    <form class="popup__form add-card__form" name="popup" method="post">
+                        <input type="text" name="name" class="add-card__input_name popup__input" value="" placeholder="Назавние">
+                        <input type="text" name="job" class="add-card__input_link popup__input" value="" placeholder="Ссылка на картинку">
                         <button type="submit" class="popup__button button">Сохранить</button>
                     </form>
                 </div>
             </div>
         </div>
-        <template id="big-picture">
-            <div class="popup big-picture">
-                <div class="popup__container">
-                    <button type="button" class="popup__close button big-picture__close-btn" aria-label="Закрыть попап"></button>
-                    <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="И тут текст" class="big-image__img">
-                    <p class="big-image__text">Тут какой то текст</p>
-                </div>
+        <div class="popup show-image">
+            <div class="popup__container">
+                <button type="button" class="popup__close button show-image__close" aria-label="Закрыть попап"></button>
+                <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="И тут текст" class="show-image__img">
+                <p class="show-image__text">Тут какой то текст</p>
             </div>
-        </template>
+        </div>
         <template id="card">
             <li class="elements__list-item" tabindex="0">
                 <button type="button" class="elements__remove-button button" aria-label="Удалить фото"></button>
@@ -77,6 +75,6 @@
                 </div>
             </li>
         </template>
-        <script src="js/main.js"></script>
+        <script src="js/new-main.js"></script>
     </body>
 </html>
