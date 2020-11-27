@@ -111,8 +111,8 @@ profileSettingsBtn.addEventListener(`click`, profilePopup);
 class AddPhotoPopup extends Popup {
     constructor (popup) {
         super(popup);
-        this.inputPlaceName = popup.querySelector(`.add-card__input_name`);
-        this.inputPlaceLink = popup.querySelector(`.add-card__input_link`);
+        this.inputPlaceName = popup.querySelector(`.add-card__input-name`);
+        this.inputPlaceLink = popup.querySelector(`.add-card__input-link`);
         this.form = popup.querySelector(`.popup__form`);
     }
 
