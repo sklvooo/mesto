@@ -46,17 +46,29 @@ const profileJob = document.querySelector(`.profile__job`);
 const addPhotoInputName = addPhotoPopup.querySelector(`.add-card__input-name`);
 const addPhotoLink = addPhotoPopup.querySelector(`.add-card__input-link`);
 
-const profilePopupCloseBtn = profilePopup.querySelector(`.profile-settings__close`);
-const addPhotoCloseBtn = addPhotoPopup.querySelector(`.add-card__close`);
-const photoPopupCloseBtn = photoPopup.querySelector(`.show-image__close`);
-
 const profilePopupForm = profilePopup.querySelector(`.profile-settings__form`);
 const addPhotoPopupForm = addPhotoPopup.querySelector(`.add-card__form`);
 
+let activePopup;
+
 const createCardTemplate = ({name, link}) => {
     const newCard = template.cloneNode(true);
-    newCard.querySelector(`.elements__image`).src = link;
-    newCard.querySelector(`.elements__text`).textContent = name;
+    const cardItem = newCard.querySelector(`.elements__list-item`);
+    const cardRemoveBtn = cardItem.querySelector(`.elements__remove-button`);
+    const cardImg = cardItem.querySelector(`.elements__image`);
+    const likeBtn = cardItem.querySelector(`.elements__button`);
+    const cardText = cardItem.querySelector(`.elements__text`);
+    cardText.textContent = name;
+    cardImg.src = link;
+    cardRemoveBtn.addEventListener(`click`, function () {
+        cardItem.remove();
+    });
+    cardImg.addEventListener(`click`, function () {
+        openPhotoPopupHandler(cardText.textContent, cardImg.src);
+    });
+    likeBtn.addEventListener(`click`,function () {
+        likeBtn.classList.toggle(`elements__button_liked`);
+    });
     return newCard
 };
 
@@ -66,49 +78,32 @@ const renderCard = (card, position, flag = false) => {
 
 initialCards.forEach((item) => renderCard(item, elementsList, true));
 
-const controller = (evt) => {
-    const btn = evt.target;
-    const btnParent = btn.parentNode;
-    switch (true) {
-        case btn.classList.contains(`elements__remove-button`):
-            btnParent.remove();
-            break;
-        case btn.classList.contains(`elements__image`):
-            const link = btnParent.querySelector(`.elements__image`);
-            const name = btnParent.querySelector(`.elements__text`);
-            openPhotoPopupHandler(name, link);
-            break;
-        case btn.classList.contains(`elements__button`):
-            btn.classList.toggle(`elements__button_liked`);
-            break;
-        default:
-            return;
-    }
-};
-
-elementsList.addEventListener(`click`, controller);
-
 const openPopup = (popup) => {
-    if (popup.classList.contains(`popup__hide`)) {
-        popup.classList.remove(`popup__hide`)
-    }
     popup.classList.add(`popup__opened`);
+    activePopup = document.querySelector(`.popup__opened`);
+    const popupCloseBtn = activePopup.querySelector(`.popup__close`);
+    popupCloseBtn.addEventListener(`click`, function () {
+        closePopup(activePopup);
+    }, {once: true});
+    document.addEventListener(`keydown`, onEscapePress);
+    document.addEventListener(`click`, onOverlayClick);
 };
 
 const closePopup = (popup) => {
     popup.classList.remove(`popup__opened`);
-    popup.classList.add(`popup__hide`);
+    document.removeEventListener(`keydown`, onEscapePress);
+    document.removeEventListener(`click`, onOverlayClick);
 };
 
-const onEscapePressProfilePopup = (evt) => {
+const onEscapePress = (evt) => {
     if (evt.key === ESCAPE) {
-        closeProfilePopupHandler();
+        closePopup(activePopup);
     }
 };
 
-const onOverlayClickProfilePopup = (evt) => {
-    if (evt.target === profilePopup) {
-        closeProfilePopupHandler();
+const onOverlayClick = (evt) => {
+    if (evt.target === activePopup) {
+        closePopup(activePopup);
     }
 };
 
@@ -116,40 +111,15 @@ const profilePopupFormSubmit = (evt) => {
     evt.preventDefault();
     profileName.textContent = profileNameInput.value;
     profileJob.textContent = profileJobInput.value;
-    closeProfilePopupHandler();
+    closePopup(profilePopup);
 };
 
-const openProfilePopupHandler = () => {
+profilePopupShowBtn.addEventListener(`click`, function () {
     openPopup(profilePopup);
     profileNameInput.value = profileName.textContent;
     profileJobInput.value = profileJob.textContent;
-    profilePopupCloseBtn.addEventListener(`click`, closeProfilePopupHandler);
-    profilePopupForm.addEventListener(`submit`, profilePopupFormSubmit);
-    document.addEventListener(`keydown`, onEscapePressProfilePopup);
-    document.addEventListener(`click`, onOverlayClickProfilePopup);
-};
-
-const closeProfilePopupHandler = () => {
-    closePopup(profilePopup);
-    profilePopupCloseBtn.removeEventListener(`click`, closeProfilePopupHandler);
-    profilePopupForm.removeEventListener(`submit`, profilePopupFormSubmit);
-    document.removeEventListener(`keydown`, onEscapePressProfilePopup);
-    document.removeEventListener(`click`, onOverlayClickProfilePopup);
-};
-
-profilePopupShowBtn.addEventListener(`click`, openProfilePopupHandler);
-
-const onEscapePressAddPhoto = (evt) => {
-    if (evt.key === ESCAPE) {
-        closeAddPhotoPopupHandler();
-    }
-};
-
-const onOverlayClickAddPhoto = (evt) => {
-    if (evt.target === addPhotoPopup) {
-        closeAddPhotoPopupHandler();
-    }
-};
+    profilePopupForm.addEventListener(`submit`, profilePopupFormSubmit, {once: true});
+});
 
 const addPhotoFormSubmit = (evt) => {
     evt.preventDefault();
@@ -158,59 +128,23 @@ const addPhotoFormSubmit = (evt) => {
         link: addPhotoLink.value
     }, elementsList);
     addPhotoPopupForm.reset();
-    closeAddPhotoPopupHandler();
-};
-
-
-const openAddPhotoPopupHandler = () => {
-    openPopup(addPhotoPopup);
-    addPhotoCloseBtn.addEventListener(`click`, closeAddPhotoPopupHandler);
-    addPhotoPopupForm.addEventListener(`submit`, addPhotoFormSubmit);
-    document.addEventListener(`keydown`, onEscapePressAddPhoto);
-    document.addEventListener(`click`, onOverlayClickAddPhoto);
-};
-
-const closeAddPhotoPopupHandler = () => {
     closePopup(addPhotoPopup);
-    addPhotoCloseBtn.removeEventListener(`click`, closeAddPhotoPopupHandler);
-    addPhotoPopupForm.removeEventListener(`submit`, addPhotoFormSubmit);
-    document.removeEventListener(`keydown`, onEscapePressAddPhoto);
-    document.removeEventListener(`click`, onOverlayClickAddPhoto);
 };
 
-photoPopupShowBtn.addEventListener(`click`, openAddPhotoPopupHandler);
-
-const onEscapePressphotoPopup = (evt) => {
-    if (evt.key === ESCAPE) {
-        closePhotoPopupHandler();
-    }
-};
-
-const onOverlayClickphotoPopup = (evt) => {
-    if (evt.target === addPhotoPopup) {
-        closePhotoPopupHandler();
-    }
-};
+photoPopupShowBtn.addEventListener(`click`, function () {
+    openPopup(addPhotoPopup);
+    addPhotoPopupForm.addEventListener(`submit`, addPhotoFormSubmit, {once: true});
+});
 
 const bigPhoto = (name, link) => {
     const text = photoPopup.querySelector(`.show-image__text`);
     const img = photoPopup.querySelector(`.show-image__img`);
-    text.textContent = name.textContent;
-    img.src = link.src;
-    img.alt = `Фото ${text.textContent}`
+    text.textContent = name;
+    img.src = link;
+    img.alt = `Фото ${text}`
 };
 
 const openPhotoPopupHandler = (name, link) => {
     openPopup(photoPopup);
     bigPhoto(name, link);
-    photoPopupCloseBtn.addEventListener(`click`, closePhotoPopupHandler);
-    document.addEventListener(`keydown`, onEscapePressphotoPopup);
-    document.addEventListener(`click`, onOverlayClickphotoPopup);
-};
-
-const closePhotoPopupHandler = () => {
-    closePopup(photoPopup);
-    photoPopupCloseBtn.removeEventListener(`click`, closeAddPhotoPopupHandler);
-    document.removeEventListener(`keydown`, onEscapePressphotoPopup);
-    document.removeEventListener(`click`, onOverlayClickphotoPopup);
 };
