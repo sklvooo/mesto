@@ -1,4 +1,4 @@
-.popup__opened {
+.popup_opened {
     animation-name: fadeIn;
     animation-duration: 1s;
     animation-timing-function: ease-out;

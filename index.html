@@ -37,7 +37,7 @@
                 <button type="button" class="popup__close button profile-settings__close" aria-label="Закрыть попап"></button>
                 <div class="popup__wrapper">
                     <h2 class="popup__header">Редактировать профиль</h2>
-                    <form class="popup__form profile-settings__form" name="popup" method="post">
+                    <form class="popup__form profile-settings__form" name="profile-settings" method="post">
                         <input type="text" name="name" class="profile-settings__input-name popup__input" value="" placeholder="Ваше имя?">
                         <input type="text" name="job" class="profile-settings__input-job popup__input" value="" placeholder="Чем вы занимаетесь?">
                         <button type="submit" class="popup__button button">Сохранить</button>
@@ -50,7 +50,7 @@
                 <button type="button" class="popup__close button add-card__close" aria-label="Закрыть попап"></button>
                 <div class="popup__wrapper">
                     <h2 class="popup__header">Новое место</h2>
-                    <form class="popup__form add-card__form" name="popup" method="post">
+                    <form class="popup__form add-card__form" name="add-card" method="post">
                         <input type="text" name="name" class="add-card__input-name popup__input" value="" placeholder="Назавние">
                         <input type="text" name="job" class="add-card__input-link popup__input" value="" placeholder="Ссылка на картинку">
                         <button type="submit" class="popup__button button">Сохранить</button>
@@ -68,13 +68,15 @@
         <template id="card">
             <li class="elements__list-item" tabindex="0">
                 <button type="button" class="elements__remove-button button" aria-label="Удалить фото"></button>
-                <img src="images/karachaev.jpg" alt="Фото Карачаевска" class="elements__image">
+                <div class="elements__image-wrapper">
+                    <img src="images/karachaev.jpg" alt="Фото Карачаевска" class="elements__image">
+                </div>
                 <div class="elements__wrapper">
                     <h2 class="elements__text">Карачаевск</h2>
                     <button type="button" class="elements__button button" aria-label="Поставить лайк"></button>
                 </div>
             </li>
         </template>
-        <script src="js/main-v3.js"></script>
+        <script type="module" src="js/main-v3.js"></script>
     </body>
 </html>
