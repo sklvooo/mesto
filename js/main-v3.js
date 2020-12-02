@@ -79,6 +79,9 @@ const renderCard = (card, position, flag = false) => {
 initialCards.forEach((item) => renderCard(item, elementsList, true));
 
 const openPopup = (popup) => {
+    if (popup.classList.contains(`popup__hide`)) {
+        popup.classList.remove(`popup__hide`)
+    }
     popup.classList.add(`popup__opened`);
     activePopup = document.querySelector(`.popup__opened`);
     const popupCloseBtn = activePopup.querySelector(`.popup__close`);
@@ -91,6 +94,7 @@ const openPopup = (popup) => {
 
 const closePopup = (popup) => {
     popup.classList.remove(`popup__opened`);
+    popup.classList.add(`popup__hide`);
     document.removeEventListener(`keydown`, onEscapePress);
     document.removeEventListener(`click`, onOverlayClick);
 };
