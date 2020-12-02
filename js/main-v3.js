@@ -81,7 +81,7 @@ const onEscapePress = (evt) => {
 };
 
 const onOverlayClick = (evt) => {
-    if (evt.target === activePopup) {
+    if (evt.target.classList.contains(`popup_opened`)) {
         activePopup = document.querySelector(`.popup_opened`);
         closePopup(activePopup);
     }
