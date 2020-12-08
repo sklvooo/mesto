@@ -24,7 +24,7 @@ const addPhotoLink = addPhotoPopup.querySelector(`.add-card__input-link`);
 const profilePopupForm = profilePopup.querySelector(`.profile-settings__form`);
 const addPhotoPopupForm = addPhotoPopup.querySelector(`.add-card__form`);
 
-let activePopup;
+const popupCloseBtns = Array.from(document.querySelectorAll(`.popup__close`));
 
 const createCardTemplate = ({name, link}) => {
     const newCard = template.cloneNode(true);
@@ -54,17 +54,20 @@ const renderCard = (card, position, flag = false) => {
 initialCards.forEach((item) => renderCard(item, elementsList, true));
 
 const openPopup = (popup) => {
-    if (popup.classList.contains(`popup__hide`)) {
-        popup.classList.remove(`popup__hide`)
-    }
+    popup.classList.remove(`popup__hide`);
     popup.classList.add(`popup_opened`);
-    const popupCloseBtn = popup.querySelector(`.popup__close`);
-    popupCloseBtn.addEventListener(`click`, function () {
-        closePopup(popup);
-    }, {once: true});
     document.addEventListener(`keydown`, onEscapePress);
     document.addEventListener(`click`, onOverlayClick);
 };
+
+const onClosePopupClick = () => {
+    const activePopup = document.querySelector(`.popup_opened`);
+    closePopup(activePopup);
+};
+
+popupCloseBtns.forEach((btn) => {
+    btn.addEventListener(`click`, onClosePopupClick);
+});
 
 const closePopup = (popup) => {
     popup.classList.remove(`popup_opened`);
@@ -75,14 +78,14 @@ const closePopup = (popup) => {
 
 const onEscapePress = (evt) => {
     if (evt.key === ESCAPE) {
-        activePopup = document.querySelector(`.popup_opened`);
+        const activePopup = document.querySelector(`.popup_opened`);
         closePopup(activePopup);
     }
 };
 
 const onOverlayClick = (evt) => {
     if (evt.target.classList.contains(`popup_opened`)) {
-        activePopup = document.querySelector(`.popup_opened`);
+        const activePopup = document.querySelector(`.popup_opened`);
         closePopup(activePopup);
     }
 };
@@ -108,6 +111,8 @@ const addPhotoFormSubmit = (evt) => {
         link: addPhotoLink.value
     }, elementsList);
     addPhotoPopupForm.reset();
+    const addPhotoPopupFormSave = addPhotoPopupForm.querySelector(`.popup__button`);
+    addPhotoPopupFormSave.classList.add(`popup__button_disabled`);
     closePopup(addPhotoPopup);
 };
 
