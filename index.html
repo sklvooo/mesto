@@ -26,6 +26,18 @@
             </section>
             <section class="elements">
                 <ul class="elements__list">
+                    <template id="element">
+                        <li class="elements__list-item" tabindex="0">
+                            <button type="button" class="elements__remove-button button" aria-label="Удалить фото"></button>
+                            <div class="elements__image-wrapper">
+                                <img src="images/karachaev.jpg" alt="Фото Карачаевска" class="elements__image">
+                            </div>
+                            <div class="elements__wrapper">
+                                <h2 class="elements__text">Карачаевск</h2>
+                                <button type="button" class="elements__button button" aria-label="Поставить лайк"></button>
+                            </div>
+                        </li>
+                    </template>
                 </ul>
             </section>
         </main>
@@ -77,18 +89,6 @@
                 <p class="show-image__text">Тут какой то текст</p>
             </div>
         </div>
-        <template id="element">
-            <li class="elements elements__list-item" tabindex="0">
-                <button type="button" class="elements__remove-button button" aria-label="Удалить фото"></button>
-                <div class="elements__image-wrapper">
-                    <img src="images/karachaev.jpg" alt="Фото Карачаевска" class="elements__image">
-                </div>
-                <div class="elements__wrapper">
-                    <h2 class="elements__text">Карачаевск</h2>
-                    <button type="button" class="elements__button button" aria-label="Поставить лайк"></button>
-                </div>
-            </li>
-        </template>
         <script type="module" src="js/index.js"></script>
         <script src="js/validity.js"></script>
     </body>
