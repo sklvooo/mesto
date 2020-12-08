@@ -6,3 +6,8 @@
     padding-top: 5px;
     margin: 25px 0 0;
 }
+
+.popup__input:focus,
+.popup__input:active {
+    outline: none;
+}

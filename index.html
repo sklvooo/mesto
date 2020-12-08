@@ -37,9 +37,15 @@
                 <button type="button" class="popup__close button profile-settings__close" aria-label="Закрыть попап"></button>
                 <div class="popup__wrapper">
                     <h2 class="popup__header">Редактировать профиль</h2>
-                    <form class="popup__form profile-settings__form" name="profile-settings" method="post">
-                        <input type="text" name="name" class="profile-settings__input-name popup__input" value="" placeholder="Ваше имя?">
-                        <input type="text" name="job" class="profile-settings__input-job popup__input" value="" placeholder="Чем вы занимаетесь?">
+                    <form class="popup__form profile-settings__form" name="profile-settings" method="post" novalidate autocomplete="off">
+                        <label class="popup__label">
+                            <input id="profile-name" type="text" name="name" class="profile-settings__input-name popup__input" value="" placeholder="Ваше имя?" required minlength="2" maxlength="40">
+                            <span class="profile-name-error popup__input-error"></span>
+                        </label>
+                        <label class="popup__label">
+                            <input id="profile-job" type="text" name="job" class="profile-settings__input-job popup__input" value="" placeholder="Чем вы занимаетесь?" required minlength="2" maxlength="200">
+                            <span class="profile-job-error popup__input-error"></span>
+                        </label>
                         <button type="submit" class="popup__button button">Сохранить</button>
                     </form>
                 </div>
@@ -50,9 +56,15 @@
                 <button type="button" class="popup__close button add-card__close" aria-label="Закрыть попап"></button>
                 <div class="popup__wrapper">
                     <h2 class="popup__header">Новое место</h2>
-                    <form class="popup__form add-card__form" name="add-card" method="post">
-                        <input type="text" name="name" class="add-card__input-name popup__input" value="" placeholder="Назавние">
-                        <input type="text" name="job" class="add-card__input-link popup__input" value="" placeholder="Ссылка на картинку">
+                    <form class="popup__form add-card__form" name="add-card" method="post" novalidate autocomplete="off">
+                        <label class="popup__label">
+                            <input id="card-name" type="text" name="name" class="add-card__input-name popup__input" value="" placeholder="Назавние" required minlength="2" maxlength="30">
+                            <span class="card-name-error popup__input-error"></span>
+                        </label>
+                        <label class="popup__label">
+                            <input id="card-link" type="url" name="job" class="add-card__input-link popup__input" value="" placeholder="Ссылка на картинку" required>
+                            <span class="card-link-error popup__input-error"></span>
+                        </label>
                         <button type="submit" class="popup__button button">Сохранить</button>
                     </form>
                 </div>
@@ -77,6 +89,7 @@
                 </div>
             </li>
         </template>
-        <script type="module" src="js/main-v3.js"></script>
+        <script type="module" src="js/index.js"></script>
+        <script src="js/validity.js"></script>
     </body>
 </html>
