@@ -11,7 +11,7 @@ const photoPopupShowBtn = document.querySelector(`.profile__add-photo`);
 
 const elementsList = document.querySelector(`.elements__list`);
 
-const template = document.querySelector(`#elements`).content;
+const template = document.querySelector(`#element`).content;
 
 const profileNameInput = profilePopup.querySelector(`.profile-settings__input-name`);
 const profileJobInput = profilePopup.querySelector(`.profile-settings__input-job`);
