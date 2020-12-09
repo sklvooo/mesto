@@ -54,7 +54,6 @@ const renderCard = (card, position, flag = false) => {
 initialCards.forEach((item) => renderCard(item, elementsList, true));
 
 const openPopup = (popup) => {
-    popup.classList.remove(`popup__hide`);
     popup.classList.add(`popup_opened`);
     document.addEventListener(`keydown`, onEscapePress);
     document.addEventListener(`click`, onOverlayClick);
@@ -71,7 +70,6 @@ popupCloseBtns.forEach((btn) => {
 
 const closePopup = (popup) => {
     popup.classList.remove(`popup_opened`);
-    popup.classList.add(`popup__hide`);
     document.removeEventListener(`keydown`, onEscapePress);
     document.removeEventListener(`click`, onOverlayClick);
 };

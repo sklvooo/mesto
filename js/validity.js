@@ -5,28 +5,25 @@ const hasInvalidInput = (inputList) => {
 };
 
 const toggleButtonState = (inputList, buttonElement, obj) => {
-    const {inactiveButtonClass} = obj;
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add(inactiveButtonClass);
+        buttonElement.classList.add(obj.inactiveButtonClass);
     } else {
-        buttonElement.classList.remove(inactiveButtonClass);
+        buttonElement.classList.remove(obj.inactiveButtonClass);
     }
 };
 
 const showInputError = (formElement, inputElement, errorMessage, obj) => {
-    const {inputErrorClass, errorClass} = obj;
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.add(inputErrorClass);
+    inputElement.classList.add(obj.inputErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add(errorClass);
+    errorElement.classList.add(obj.errorClass);
 };
 
 const hideInputError = (formElement, inputElement, obj) => {
-    const {inputErrorClass, errorClass} = obj;
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove(inputErrorClass);
+    inputElement.classList.remove(obj.inputErrorClass);
     errorElement.textContent = '';
-    errorElement.classList.remove(errorClass);
+    errorElement.classList.remove(obj.errorClass);
 };
 
 const isValid = (formElement, inputElement, obj) => {
@@ -38,9 +35,8 @@ const isValid = (formElement, inputElement, obj) => {
 };
 
 const setListeners = (formItem, obj) => {
-    const {inputSelector, submitButtonSelector} = obj;
-    const inputs = Array.from(formItem.querySelectorAll(inputSelector));
-    const buttonElement = formItem.querySelector(submitButtonSelector);
+    const inputs = Array.from(formItem.querySelectorAll(obj.inputSelector));
+    const buttonElement = formItem.querySelector(obj.submitButtonSelector);
     toggleButtonState(inputs, buttonElement, obj);
 
     inputs.forEach((inputItem) => {
@@ -52,9 +48,8 @@ const setListeners = (formItem, obj) => {
 };
 
 const enableValidation = (obj) => {
-    const {formSelector} = obj;
 
-    const forms = Array.from(document.querySelectorAll(formSelector));
+    const forms = Array.from(document.querySelectorAll(obj.formSelector));
 
     forms.forEach((formItem) => {
         formItem.addEventListener(`submit`, (evt) => evt.preventDefault());

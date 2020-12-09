@@ -1,12 +1,5 @@
 .popup_opened {
-    animation-name: fadeIn;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
     opacity: 1;
     visibility: visible;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0; visibility: hidden;}
-    to {opacity:1; visibility: visible;}
+    transition: 1s all;
 }
