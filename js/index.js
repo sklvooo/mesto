@@ -1,5 +1,5 @@
 import {initialCards} from './data.js';
-import {Card} from './card.js';
+import {Card} from './Card.js';
 import {FormValidator} from './validity.js';
 
 const ESCAPE = `Escape`;
