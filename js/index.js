@@ -1,17 +1,16 @@
 import {initialCards} from './data.js';
+import {Card} from './card.js';
+import {FormValidator} from './validity.js';
 
 const ESCAPE = `Escape`;
 
 const profilePopup = document.querySelector(`.profile-settings`);
-const photoPopup = document.querySelector(`.show-image`);
 const addPhotoPopup = document.querySelector(`.add-card`);
 
 const profilePopupShowBtn = document.querySelector(`.profile__add-button`);
 const photoPopupShowBtn = document.querySelector(`.profile__add-photo`);
 
 const elementsList = document.querySelector(`.elements__list`);
-
-const template = document.querySelector(`#element`).content;
 
 const profileNameInput = profilePopup.querySelector(`.profile-settings__input-name`);
 const profileJobInput = profilePopup.querySelector(`.profile-settings__input-job`);
@@ -26,29 +25,17 @@ const addPhotoPopupForm = addPhotoPopup.querySelector(`.add-card__form`);
 
 const popupCloseBtns = Array.from(document.querySelectorAll(`.popup__close`));
 
-const createCardTemplate = ({name, link}) => {
-    const newCard = template.cloneNode(true);
-    const cardItem = newCard.querySelector(`.elements__list-item`);
-    const cardRemoveBtn = cardItem.querySelector(`.elements__remove-button`);
-    const cardImg = cardItem.querySelector(`.elements__image`);
-    const likeBtn = cardItem.querySelector(`.elements__button`);
-    const cardText = cardItem.querySelector(`.elements__text`);
-    cardText.textContent = name;
-    cardImg.src = link;
-    cardRemoveBtn.addEventListener(`click`, function () {
-        cardItem.remove();
-    });
-    cardImg.addEventListener(`click`, function () {
-        openPhotoPopupHandler(cardText.textContent, cardImg.src);
-    });
-    likeBtn.addEventListener(`click`,function () {
-        likeBtn.classList.toggle(`elements__button_liked`);
-    });
-    return newCard
+const validityRules = {
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: `popup__input-error_active`
 };
 
 const renderCard = (card, position, flag = false) => {
-    flag ? position.append(createCardTemplate(card)) : position.prepend(createCardTemplate(card));
+    const newCard = new Card(card, `element`);
+    flag ? position.append(newCard.getElement()) : position.prepend(newCard.getElement());
 };
 
 initialCards.forEach((item) => renderCard(item, elementsList, true));
@@ -92,6 +79,8 @@ const profilePopupFormSubmit = (evt) => {
     evt.preventDefault();
     profileName.textContent = profileNameInput.value;
     profileJob.textContent = profileJobInput.value;
+    const PopupFormSave = profilePopupForm.querySelector(`.popup__button`);
+    PopupFormSave.classList.add(`popup__button_disabled`);
     closePopup(profilePopup);
 };
 
@@ -119,15 +108,8 @@ photoPopupShowBtn.addEventListener(`click`, function () {
     addPhotoPopupForm.addEventListener(`submit`, addPhotoFormSubmit, {once: true});
 });
 
-const bigPhoto = (name, link) => {
-    const text = photoPopup.querySelector(`.show-image__text`);
-    const img = photoPopup.querySelector(`.show-image__img`);
-    text.textContent = name;
-    img.src = link;
-    img.alt = `Фото ${text}`
-};
+const profileFormValidity = new FormValidator(validityRules, profilePopupForm);
+profileFormValidity.enableValidation();
 
-const openPhotoPopupHandler = (name, link) => {
-    openPopup(photoPopup);
-    bigPhoto(name, link);
-};
+const newPhotoFormValidation = new FormValidator(validityRules, addPhotoPopupForm);
+newPhotoFormValidation.enableValidation();
