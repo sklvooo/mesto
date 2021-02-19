@@ -8,12 +8,12 @@
     </head>
     <body class="page">
         <header class="header">
-            <img src="images/logo.svg" alt="Логотип проекта Место" class="logo">
+            <img src="<%=require('./images/logo.svg')%>" alt="Логотип проекта Место" class="logo">
         </header>
         <main>
             <section class="profile">
                 <div class="profile__info">
-                    <img src="images/avatar.png" alt="Фотография пользователя" class="profile__photo">
+                    <img src="<%=require('./images/avatar.png')%>" alt="Фотография пользователя" class="profile__photo">
                     <div class="profile__text">
                         <div class="profile__wrapper">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -89,6 +89,5 @@
                 <p class="show-image__text">Тут какой то текст</p>
             </div>
         </div>
-        <script type="module" src="js/index.js"></script>
     </body>
 </html>
