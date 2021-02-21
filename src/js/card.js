@@ -47,6 +47,6 @@ export class Card {
     }
 
     _openPhotoPopupHandler() {
-        this.handleCardClick._openPopup(this.name, this.link)
+        this.handleCardClick.openPopup(this.name, this.link)
     }
 }
