@@ -1,10 +1,10 @@
 import {initialCards, validityRules} from './data.js';
-import {Card} from './card.js';
 import {FormValidator} from './validity.js';
-import {PopupWithImage} from "./popupWithImage";
 import '../pages/index.css';
 import {PopupWithForm} from "./popupWithForm";
 import {UserInfo} from "./userInfo";
+import {Section} from "./section";
+import {renderCard} from "./utils";
 
 const addPhotoPopup = document.querySelector(`.add-card`);
 
@@ -23,12 +23,8 @@ const profilePopupForm = document.querySelector(`.profile-settings__form`);
 const addPhotoPopupForm = document.querySelector(`.add-card__form`);
 
 
-const renderCard = (card, position, flag = false) => {
-    const newCard = new Card(card, `element`, new PopupWithImage(`show-image`));
-    flag ? position.append(newCard.getElement()) : position.prepend(newCard.getElement());
-};
-
-initialCards.forEach((item) => renderCard(item, elementsList, true));
+const section = new Section(initialCards, renderCard, elementsList);
+section.render();
 
 
 const personInfo = new UserInfo('profile__name', 'profile__job');
@@ -38,16 +34,17 @@ const profilePopupFormSubmit = () => {
 };
 
 profilePopupShowBtn.addEventListener(`click`, function () {
-    new PopupWithForm('profile-settings', profilePopupFormSubmit).openPopup();
+    const popupName = new PopupWithForm('profile-settings', profilePopupFormSubmit);
+    popupName.openPopup();
     profileNameInput.value = personInfo.getUserInfo().nameInfo;
     profileJobInput.value = personInfo.getUserInfo().job;
 });
 
 const addPhotoFormSubmit = () => {
-    renderCard({
+    section.addItem({
         name: addPhotoInputName.value,
         link: addPhotoLink.value
-    }, elementsList);
+    });
 };
 
 photoPopupShowBtn.addEventListener(`click`, function () {

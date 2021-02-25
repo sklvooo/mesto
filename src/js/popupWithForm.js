@@ -26,7 +26,12 @@ export class PopupWithForm extends Popup {
     _formSubmitHandler(evt) {
         evt.preventDefault();
         this.formSubmit();
-        //this._popup.querySelector(`.popup__button`).classList.add(`popup__button_disabled`);
+        this._popup.querySelector(`.popup__button`).classList.add(`popup__button_disabled`);
         this._closePopup();
+    }
+
+    _getInputValues() {
+        const name = this.popupForm.querySelector('input[name="name"]');
+        const link = this.popupForm.querySelector('input[name="link"]');
     }
 }
