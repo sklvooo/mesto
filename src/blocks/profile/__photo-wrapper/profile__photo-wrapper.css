@@ -1,0 +1,7 @@
+.profile__photo-wrapper {
+    position: relative;
+}
+
+.profile__photo-wrapper:hover .profile__photo-btn {
+    display: block;
+}

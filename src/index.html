@@ -13,7 +13,10 @@
         <main>
             <section class="profile">
                 <div class="profile__info">
-                    <img src="<%=require('./images/avatar.png')%>" alt="Фотография пользователя" class="profile__photo">
+                    <div class="profile__photo-wrapper">
+                        <img src="<%=require('./images/avatar.png')%>" alt="Фотография пользователя" class="profile__photo">
+                        <div class="profile__photo-btn"></div>
+                    </div>
                     <div class="profile__text">
                         <div class="profile__wrapper">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -34,7 +37,10 @@
                             </div>
                             <div class="elements__wrapper">
                                 <h2 class="elements__text">Карачаевск</h2>
-                                <button type="button" class="elements__button button" aria-label="Поставить лайк"></button>
+                                <div class="elements__like-wrapper">
+                                    <button type="button" class="elements__button button" aria-label="Поставить лайк"></button>
+                                    <p class="elements__like-counter">1</p>
+                                </div>
                             </div>
                         </li>
                     </template>
@@ -79,6 +85,32 @@
                         </label>
                         <button type="submit" class="popup__button button">Сохранить</button>
                     </form>
+                </div>
+            </div>
+        </div>
+        <div class="popup change-photo">
+            <div class="popup__container">
+                <button type="button" class="popup__close button" aria-label="Закрыть попап"></button>
+                <div class="popup__wrapper">
+                    <h2 class="popup__header">Обновить аватар</h2>
+                    <form class="popup__form change-photo__form" name="change-photo" method="post" novalidate autocomplete="off">
+                        <label class="popup__label">
+                            <input id="photo-link" type="url" name="link" class="change-photo__input-link popup__input" value="" placeholder="Ссылка на картинку" required>
+                            <span class="photo-link-error popup__input-error"></span>
+                        </label>
+                        <button type="submit" class="popup__button button">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="popup delete-card">
+            <div class="popup__container">
+                <button type="button" class="popup__close button delete__close" aria-label="Закрыть попап"></button>
+                <div class="popup__wrapper">
+                    <h2 class="popup__header">Вы уверены</h2>
+                    <div class="popup__form">
+                        <button class="popup__button button">Да</button>
+                    </div>
                 </div>
             </div>
         </div>
