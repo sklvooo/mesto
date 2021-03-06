@@ -1,17 +1,20 @@
 import {Popup} from "./Popup";
 
 export class DeletePopup extends Popup {
-    constructor(popup, cb, card) {
+    constructor(popup) {
         super(popup);
-        this.cb = cb;
         this.btn = this._popup.querySelector(`.popup__button`);
-        this.card = card;
         this._deletePopupHandler = this._deletePopupHandler.bind(this)
     }
 
     openPopup() {
         super.openPopup();
         this.btn.addEventListener(`click`, this._deletePopupHandler);
+    }
+
+    updateData(cb, card) {
+       this.cb = cb;
+        this.card = card;
     }
 
     _deletePopupHandler() {

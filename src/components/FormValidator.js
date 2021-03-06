@@ -23,7 +23,14 @@ export class FormValidator {
                 this._isValid(inputItem);
                 this._toggleButtonState(inputs, buttonElement);
             })
-        })
+        });
+
+        this.form.addEventListener('reset', () => {
+            inputs.forEach((inputElement) => {
+                this.hideInputError(inputElement);
+                this._toggleButtonState(inputs, buttonElement);
+            })
+        });
     };
 
     _toggleButtonState(inputList, buttonElement) {

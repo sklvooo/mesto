@@ -25,8 +25,6 @@ const profileJobInput = document.querySelector(`.profile-settings__input-job`);
 const profilePopupForm = document.querySelector(`.profile-settings__form`);
 const addPhotoPopupForm = document.querySelector(`.add-card__form`);
 const avatarPopupForm = document.querySelector(`.change-photo`);
-const addPhotoNameInput = document.querySelector(`.add-card__input-name`);
-const addPhotoLinkInput = document.querySelector(`.add-card__input-link`);
 const setAvatarBtn = document.querySelector(`.profile__photo-btn`);
 
 const api = new Api(apiOption);
@@ -41,6 +39,7 @@ profileFormValidity.enableValidation();
 newPhotoFormValidation.enableValidation();
 avatarValidation.enableValidation();
 
+const deletePopup = new DeletePopup('delete-card');
 
 const renderCard = (card, position, flag = false) => {
 
@@ -74,7 +73,8 @@ const renderCard = (card, position, flag = false) => {
             });
     };
 
-    const deletePopup = new DeletePopup('delete-card', deleteCard, card);
+    deletePopup.updateData(deleteCard, card);
+
     const cardCallbacks = [
         bigPhotoPopup,
         deletePopup,
@@ -127,9 +127,6 @@ profilePopupShowBtn.addEventListener(`click`, function () {
     popupName.openPopup();
     profileNameInput.value = personInfo.getUserInfo().nameInfo;
     profileJobInput.value = personInfo.getUserInfo().job;
-    profileFormValidity.hideInputError(profileNameInput);
-    profileFormValidity.hideInputError(profileJobInput);
-    profilePopupForm.querySelector(`.popup__button`).classList.add(`popup__button_disabled`);
 });
 
 const addPhotoFormSubmit = (obj) => {
@@ -146,10 +143,6 @@ const addPhotoForm = new PopupWithForm(`add-card`, addPhotoFormSubmit);
 
 photoPopupShowBtn.addEventListener(`click`, function () {
     addPhotoForm.openPopup();
-    newPhotoFormValidation.hideInputError(addPhotoNameInput);
-    newPhotoFormValidation.hideInputError(addPhotoLinkInput);
-    addPhotoPopupForm.reset();
-    addPhotoPopupForm.querySelector(`.popup__button`).classList.add(`popup__button_disabled`);
 });
 
 const avatarFormSubmitHandler = (obj) => {
