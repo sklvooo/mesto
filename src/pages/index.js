@@ -1,13 +1,13 @@
-import {validityRules} from '../js/data.js';
-import {FormValidator} from '../js/validity.js';
+import {validityRules} from '../components/data.js';
+import {FormValidator} from '../components/FormValidator.js';
 import './index.css';
-import {PopupWithForm} from "../js/popupWithForm";
-import {UserInfo} from "../js/userInfo";
-import {Section} from "../js/section";
-import {Card} from "../js/card";
-import {PopupWithImage} from "../js/popupWithImage";
-import {Api} from "../js/api";
-import {DeletePopup} from "../js/deletePopup";
+import {PopupWithForm} from "../components/PopupWithForm";
+import {UserInfo} from "../components/UserInfo";
+import {Section} from "../components/Section";
+import {Card} from "../components/Card";
+import {PopupWithImage} from "../components/PopupWithImage";
+import {Api} from "../components/Api";
+import {DeletePopup} from "../components/DeletePopup";
 
 const apiOption = {
     url: 'https://mesto.nomoreparties.co/v1/cohort-20',
@@ -24,6 +24,7 @@ const profileNameInput = document.querySelector(`.profile-settings__input-name`)
 const profileJobInput = document.querySelector(`.profile-settings__input-job`);
 const profilePopupForm = document.querySelector(`.profile-settings__form`);
 const addPhotoPopupForm = document.querySelector(`.add-card__form`);
+const avatarPopupForm = document.querySelector(`.change-photo`);
 const addPhotoNameInput = document.querySelector(`.add-card__input-name`);
 const addPhotoLinkInput = document.querySelector(`.add-card__input-link`);
 const setAvatarBtn = document.querySelector(`.profile__photo-btn`);
@@ -33,10 +34,12 @@ const personInfo = new UserInfo('profile__name', 'profile__job', 'profile__photo
 const bigPhotoPopup = new PopupWithImage(`show-image`);
 const profileFormValidity = new FormValidator(validityRules, profilePopupForm);
 const newPhotoFormValidation = new FormValidator(validityRules, addPhotoPopupForm);
+const avatarValidation = new FormValidator(validityRules, avatarPopupForm);
 let userID;
 
 profileFormValidity.enableValidation();
 newPhotoFormValidation.enableValidation();
+avatarValidation.enableValidation();
 
 
 const renderCard = (card, position, flag = false) => {
@@ -71,7 +74,7 @@ const renderCard = (card, position, flag = false) => {
             });
     };
 
-    const deletePopup = new DeletePopup('delete-card', deleteCard);
+    const deletePopup = new DeletePopup('delete-card', deleteCard, card);
     const cardCallbacks = [
         bigPhotoPopup,
         deletePopup,

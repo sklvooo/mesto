@@ -46,7 +46,7 @@ export class Card {
     }
 
     _removeBtnClickHandler() {
-        this.handleDeleteClick.openPopup(this.id);
+        this.handleDeleteClick.openPopup();
     }
 
     _setEventListeners() {
