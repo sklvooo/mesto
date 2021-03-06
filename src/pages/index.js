@@ -92,20 +92,12 @@ const renderCard = (card, position, flag = false) => {
 
 const section = new Section(renderCard, elementsList);
 
-
-api.getUserInfo()
-    .then((res) => {
-        personInfo.setUserInfo(res.name, res.about);
-        personInfo.setUserAvatar(res.avatar);
-        userID = res._id;
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-
-api.getInitialCards()
-    .then((res) => {
-        section.render(res);
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then(([userInfo, cards]) => {
+    personInfo.setUserInfo(userInfo.name, userInfo.about);
+    personInfo.setUserAvatar(userInfo.avatar);
+    userID = userInfo._id;
+    section.render(cards);
     })
     .catch((err) => {
         console.log(err);
