@@ -35,13 +35,24 @@ const newPhotoFormValidation = new FormValidator(validityRules, addPhotoPopupFor
 const avatarValidation = new FormValidator(validityRules, avatarPopupForm);
 let userID;
 
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+    .then(([userInfo, cards]) => {
+        personInfo.setUserInfo(userInfo.name, userInfo.about);
+        personInfo.setUserAvatar(userInfo.avatar);
+        userID = userInfo._id;
+        section.render(cards);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
 profileFormValidity.enableValidation();
 newPhotoFormValidation.enableValidation();
 avatarValidation.enableValidation();
 
-const deletePopup = new DeletePopup('delete-card');
-
 const renderCard = (card, position, flag = false) => {
+
+    const deletePopup = new DeletePopup('delete-card');
 
     const setLike = (id) => {
         api.setLike(id)
@@ -91,17 +102,6 @@ const renderCard = (card, position, flag = false) => {
 };
 
 const section = new Section(renderCard, elementsList);
-
-Promise.all([api.getUserInfo(), api.getInitialCards()])
-    .then(([userInfo, cards]) => {
-    personInfo.setUserInfo(userInfo.name, userInfo.about);
-    personInfo.setUserAvatar(userInfo.avatar);
-    userID = userInfo._id;
-    section.render(cards);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
 
 const profilePopupFormSubmit = (obj) => {
     api.editProfileInfo(obj.name, obj.link)

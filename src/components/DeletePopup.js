@@ -14,7 +14,7 @@ export class DeletePopup extends Popup {
 
     updateData(cb, card) {
        this.cb = cb;
-        this.card = card;
+       this.card = card;
     }
 
     _deletePopupHandler() {
