@@ -38,15 +38,16 @@ export class Card {
     _likeBtnClickHandler() {
         const likeBtn = this._element.querySelector(`.elements__button`);
         if (likeBtn.classList.contains(`elements__button_liked`)) {
-            this.deleteLikeHandler(this.id);
+            this.deleteLikeHandler(this.id, this._element);
         } else {
-            this.setLikeHandler(this.id);
+            this.setLikeHandler(this.id, this._element);
         }
         likeBtn.classList.toggle(`elements__button_liked`);
     }
 
     _removeBtnClickHandler() {
         this.handleDeleteClick.openPopup();
+        this.handleDeleteClick.updateData(this.id, this._element);
     }
 
     _setEventListeners() {

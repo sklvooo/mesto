@@ -1,4 +1,4 @@
-import {validityRules} from '../components/data.js';
+import {apiOption, validityRules} from '../components/data.js';
 import {FormValidator} from '../components/FormValidator.js';
 import './index.css';
 import {PopupWithForm} from "../components/PopupWithForm";
@@ -8,14 +8,6 @@ import {Card} from "../components/Card";
 import {PopupWithImage} from "../components/PopupWithImage";
 import {Api} from "../components/Api";
 import {DeletePopup} from "../components/DeletePopup";
-
-const apiOption = {
-    url: 'https://mesto.nomoreparties.co/v1/cohort-20',
-    header: {
-        authorization: '5f03bf04-a3c4-47d6-9cb8-5a48c2f0123b',
-        'Content-Type': 'application/json'
-    }
-};
 
 const profilePopupShowBtn = document.querySelector(`.profile__add-button`);
 const photoPopupShowBtn = document.querySelector(`.profile__add-photo`);
@@ -35,6 +27,18 @@ const newPhotoFormValidation = new FormValidator(validityRules, addPhotoPopupFor
 const avatarValidation = new FormValidator(validityRules, avatarPopupForm);
 let userID;
 
+const deleteCard = (id, elem) => {
+    api.deleteCard(id)
+        .then(() => {
+            elem.remove();
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+const deletePopup = new DeletePopup('delete-card', deleteCard);
+
 Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userInfo, cards]) => {
         personInfo.setUserInfo(userInfo.name, userInfo.about);
@@ -50,49 +54,34 @@ profileFormValidity.enableValidation();
 newPhotoFormValidation.enableValidation();
 avatarValidation.enableValidation();
 
+const setLike = (id, elem) => {
+    api.setLike(id)
+        .then((res) => {
+            elem.querySelector(`.elements__like-counter`).textContent = res.likes.length;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+const deleteLike = (id, elem) => {
+    api.deleteLike(id)
+        .then((res) => {
+            elem.querySelector(`.elements__like-counter`).textContent = res.likes.length;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+const cardCallbacks = [
+    bigPhotoPopup,
+    deletePopup,
+    setLike,
+    deleteLike
+];
+
 const renderCard = (card, position, flag = false) => {
-
-    const deletePopup = new DeletePopup('delete-card');
-
-    const setLike = (id) => {
-        api.setLike(id)
-            .then((res) => {
-                elem.querySelector(`.elements__like-counter`).textContent = res.likes.length;
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-
-    const deleteLike = (id) => {
-        api.deleteLike(id)
-            .then((res) => {
-                elem.querySelector(`.elements__like-counter`).textContent = res.likes.length;
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-
-    const deleteCard = (id) => {
-        api.deleteCard(id)
-            .then(() => {
-                elem.remove();
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-
-    deletePopup.updateData(deleteCard, card);
-
-    const cardCallbacks = [
-        bigPhotoPopup,
-        deletePopup,
-        setLike,
-        deleteLike
-    ];
-
     const newCard = new Card(card, `element`, cardCallbacks, userID);
     const elem = newCard.getElement();
     flag ? position.append(elem) : position.prepend(elem);

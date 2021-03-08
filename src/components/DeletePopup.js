@@ -1,8 +1,9 @@
 import {Popup} from "./Popup";
 
 export class DeletePopup extends Popup {
-    constructor(popup) {
+    constructor(popup, cb) {
         super(popup);
+        this.cb = cb;
         this.btn = this._popup.querySelector(`.popup__button`);
         this._deletePopupHandler = this._deletePopupHandler.bind(this)
     }
@@ -12,13 +13,13 @@ export class DeletePopup extends Popup {
         this.btn.addEventListener(`click`, this._deletePopupHandler);
     }
 
-    updateData(cb, card) {
-       this.cb = cb;
-       this.card = card;
+    updateData(id, elem) {
+       this.id = id;
+       this.elem = elem
     }
 
     _deletePopupHandler() {
-        this.cb(this.card._id);
+        this.cb(this.id, this.elem);
         this._closePopup();
     }
 
